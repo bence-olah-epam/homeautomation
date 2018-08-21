@@ -1,0 +1,49 @@
+
+÷÷÷÷÷÷÷÷÷ REQUESTING TOKEN ÷÷÷÷÷÷÷÷÷
+
+http://itnerd.space/2017/06/19/how-to-authenticate-to-tp-link-cloud-api/
+
+
+https://wap.tplinkcloud.com
+
+
+{
+ "method": "login",
+ "params": {
+ "appType": "Kasa_Android",
+ "cloudUserName": "bence.olah@gmail.com",
+ "cloudPassword": "PASSWORD",
+ "terminalUUID": "MY_UUID_v4"
+ }
+}
+
+
+
+{"error_code":0,"result":{"accountId":"1135828","regTime":"2017-04-12 18:27:52","email":"Bence.olah@gmail.com","token":"YOUR_TOKEN"}}
+
+
+
+÷÷÷÷÷÷÷÷÷ DEVICE ENDPOINT ÷÷÷÷÷÷÷÷÷
+http://itnerd.space/2017/05/21/how-to-get-the-tp-link-hs100-cloud-end-point-url/
+
+
+
+https://wap.tplinkcloud.com?token=YOUR_TOKEN
+
+{"method":"getDeviceList"}
+
+
+{"error_code":0,"result":{"deviceList":[{"fwVer":"1.1.0 Build 160503 Rel.145047","deviceName":"Wi-Fi Smart Plug","status":1,"alias":"Szivattyu","deviceType":"IOT.SMARTPLUGSWITCH","appServerUrl":"https://eu-wap.tplinkcloud.com","deviceModel":"HS100(EU)","deviceMac":"50C7BF1C9B5B","role":0,"isSameRegion":true,"hwId":"22603EA5E716DEAEA6642A30BE87AFCA","fwId":"BEF3C9ECA17BF143A7D627AB2D1382C4","oemId":"812A90EB2FCF306A993FAD8748024B07","deviceId":"YOUR_DEVICE_ID","deviceHwVer":"1.0"}]}}
+
+
+
+
+÷÷÷÷÷÷÷÷÷ DEVICE STATUS ÷÷÷÷÷÷÷÷÷
+http://itnerd.space/2017/01/29/get-the-state-of-your-hs100-smart-plug/
+
+https://wap.tplinkcloud.com/?token=YOUR_TOKEN
+
+{"method":"passthrough", "params": {"deviceId": "YOUR_DEVICE_ID", "requestData": "{\"system\":{\"get_sysinfo\":null},\"emeter\":{\"get_realtime\":null}}" }}
+
+
+{"error_code":0,"result":{"responseData":"{\"system\":{\"get_sysinfo\":{\"err_code\":0,\"sw_ver\":\"1.1.0 Build 160503 Rel.145047\",\"hw_ver\":\"1.0\",\"type\":\"IOT.SMARTPLUGSWITCH\",\"model\":\"HS100(EU)\",\"mac\":\"50:C7:BF:1C:9B:5B\",\"deviceId\":\"YOUR_DEVICE_ID\",\"hwId\":\"22603EA5E716DEAEA6642A30BE87AFCA\",\"fwId\":\"BEF3C9ECA17BF143A7D627AB2D1382C4\",\"oemId\":\"812A90EB2FCF306A993FAD8748024B07\",\"alias\":\"Szivattyu\",\"dev_name\":\"Wi-Fi Smart Plug\",\"icon_hash\":\"\",\"relay_state\":0,\"on_time\":0,\"active_mode\":\"schedule\",\"feature\":\"TIM\",\"updating\":0,\"rssi\":-72,\"led_off\":0,\"latitude\":0,\"longitude\":0}},\"emeter\":{\"err_code\":-1,\"err_msg\":\"module not support\"}}"}}
